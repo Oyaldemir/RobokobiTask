@@ -1,0 +1,302 @@
+/* Reset CSS*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+    color: #000;
+    text-decoration: none !important;
+}
+
+a:hover{
+    color:#000;
+}
+input{
+    outline: none;
+}
+/* !Reset CSS*/
+
+:root{
+    --main-color: #EE4524;
+    --white-color: #ffffff;
+    --gray-color: #aeaeae;
+    --dark-color: #3b3b3b;
+    --red-color: #ff0000;
+}
+
+*:not(i){
+   font-family: 'Titillium Web', sans-serif !important;
+   color: #404041;
+}
+
+body{
+    display: inline-block;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(https://robokobi.com/assets/Images/slider/bg.jpg) !important;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--gray-color);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--white-color); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color); 
+}
+
+nav a span{
+    font-weight: 800;
+    font-size: 1.3em;
+    margin-top: 5px;
+    margin-left: 7px;
+}
+
+.bikeListWrapper{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 4rem auto 0;
+
+}
+
+button{
+    outline: none !important;
+    box-shadow: none !important;
+}
+button:not(.not), .btn:not(.not){
+    background: var(--main-color);
+    color: var(--white-color);
+    border: 1px solid var(--main-color);
+}
+
+h5{
+    color: var(--main-color);
+    font-weight: 900;
+}
+
+.bikeListItem{
+    position: relative;
+    border-bottom: 1px solid var(--gray-color);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.bikeListItem .bikeListItemDelete{
+    position: absolute;
+    display: none;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 18px;
+    top:-2px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.bikeListItem .bikeListItemDelete span{
+    color: var(--main-color);
+}
+
+.bikeListItem:hover .bikeListItemDelete{
+    display: flex;
+}
+
+.bikeListHeader{
+    display: flex;
+    justify-content: end;
+    margin-top: 3rem;
+}
+
+.bikeListHeader .inputDiv{
+    position: relative;
+}
+.bikeListHeader .inputDiv input{
+    padding-right: 35px;
+    padding-left: 5px;
+    width: 10rem;
+    height: 100%;
+    border-radius: 0.25rem;
+    border: 1px solid var(--gray-color);
+}
+.bikeListHeader .inputDiv span{
+    position: absolute;
+    width: 20px;
+    height: auto;
+    display: flex;
+    right: 26px;
+    top: 11px;
+}
+
+#mainContainer{
+    margin-top: 50px;
+}
+
+#mainContainer nav{
+    display: flex;
+}
+
+#mainContainer nav .routes{
+    display: flex;
+    margin: 6px 0 0 15px;
+}
+
+    #mainContainer nav .routes a{
+        margin-left: 25px;
+    }
+
+.logoLink{
+    white-space: nowrap;
+}
+
+.title h1{
+    font-weight: 700;
+    color: var(--main-color);
+}
+
+.form-input{
+    display: block;
+    margin-bottom: 25px;
+}
+.form-input label{
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--main-color);
+}
+.form-input input, .form-input select{
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--gray-color);
+    height: 2.2rem;
+    font-weight: 400;
+    font-size: 14px;
+    outline: none;
+    padding-left: 5px;
+}
+
+#bikeList{
+    position: relative;
+}
+#loading{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--white-color);
+}
+#loading i{
+    position: absolute;
+    font-size: 2.5em;
+    margin-top: 7rem;
+    color: var(--main-color);
+    animation: loadingSpinner 2s cubic-bezier(0.4,0.4,0.4,0.4) infinite;
+}
+
+#bikeNameError{
+    font-size: 14px;
+    margin-top: 5px;
+    color: var(--red-color);
+}
+
+
+@keyframes loadingSpinner {
+    from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px){
+    .bikeListWrapper{
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 478px){
+    .bikeListWrapper{
+        margin-top: 2.5rem;
+    }
+    .bikeListHeader{
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+
+    #mainContainer{
+        margin-top: 20px;
+    }
+    #mainContainer nav{
+        display: block;
+    }
+    #mainContainer nav .routes{
+        display: flex;
+        margin: 25px 0;
+    }
+    #mainContainer nav .routes a{
+        margin-right: 15px;
+        margin-left: 0;
+    }
+}

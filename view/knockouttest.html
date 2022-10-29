@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnockoutJs</title>
+
+    <script type="text/javascript" src="https://knockoutjs.com/downloads/knockout-3.5.1.js"></script>
+</head>
+
+<body>
+    <h1>KnockoutJs Test</h1>
+    <p>
+        By <span data-bind="text: authorName"></span>
+    </p>
+    <p>
+        Author Name: <input type="text" data-bind="value: authorName" />
+    </p>
+    <p>
+        By <span data-bind="text: authorName"></span>
+        (<a data-bind="attr: { href: twitterUrl}, text: twitterAlias"></a>)
+    </p>
+    <p>
+        <button data-bind="click: capitalizeTwitterAlias">Capitalize</button>
+    </p>
+
+    <h2>Record <span data-bind="text: displayRecord"></span></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Opponent</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: gameResults">
+            <tr>
+                <td><input data-bind="value:opponent" /></td>
+                <td><select data-bind="options: $root.resultChoices,
+          value:result, optionsText: $data"></select></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td><select data-bind="options: resultChoices2, value:'id', optionsText:'name' "></select></td>
+            </tr>
+        </tbody>
+    </table>
+    <button data-bind="click: addResult">Add New Result</button>
+    <script type="text/javascript">
+        function GameResult(opponent, result) {
+            var self = this;
+            self.opponent = opponent;
+            self.result = ko.observable(result);
+        }
+
+        function ViewModel() {
+            var self = this;
+
+            self.resultChoices = ["Win", "Loss", "Tie"];
+            self.resultChoices2 = [
+                { name: 'Item 1', id: 1, disable: ko.observable(false) },
+                { name: 'Item 3', id: 3, disable: ko.observable(true) },
+                { name: 'Item 4', id: 4, disable: ko.observable(false) }
+            ]
+
+            self.gameResults = ko.observableArray([
+                new GameResult("Brendan", self.resultChoices[0]),
+                new GameResult("Brendan", self.resultChoices[0]),
+                new GameResult("Michelle", self.resultChoices[1])
+            ]);
+
+            self.addResult = function () {
+                self.gameResults.push(new GameResult("", self.resultChoices[0]));
+            }
+
+            self.displayRecord = ko.computed(function () {
+                var wins = self.gameResults().filter(function (value) { return value.result() == "Win"; }).length;
+                var losses = self.gameResults().filter(function (value) { return value.result() == "Loss"; }).length;
+                var ties = self.gameResults().filter(function (value) { return value.result() == "Tie"; }).length;
+                return wins + " - " + losses + " - " + ties;
+            }, this);
+
+            this.authorName = ko.observable('Steve Smith');
+            this.twitterAlias = ko.observable('@ardalis');
+
+            this.twitterUrl = ko.computed(function () {
+                return "https://twitter.com/" + this.twitterAlias().replace('@', '');
+            }, this);
+
+            this.capitalizeTwitterAlias = function () {
+                var currentValue = this.twitterAlias();
+                this.twitterAlias(currentValue.toUpperCase());
+            }
+        };
+        ko.applyBindings(new ViewModel);
+    </script>
+</body>
+
+</html>
