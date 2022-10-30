@@ -148,7 +148,7 @@ h5{
     height: 15px;
     border-radius: 50%;
     font-size: 18px;
-    top:8px;
+    top:10px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -297,6 +297,7 @@ h5{
     height: 65vh;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 #noResultText{
@@ -307,7 +308,7 @@ h5{
 }
 
 .textControl{
-    display: block;
+    display: inline;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
