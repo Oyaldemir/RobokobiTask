@@ -8,10 +8,10 @@ Herhangi bir işlem gerektirmiyor. Index.html'i açıp, kullanmaya başlayabilir
 ## İşlemler
 * Ekleme
 * Silme
-  ** ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-delete.png)
+  * ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-delete.png)
 * Filtreleme
 * Sıralama
-  ** ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-sort.png)
+  * ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-sort.png)
 * Tablo/Grafik
-  ** ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-chart.png)
+  * ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-chart.png)
 * Validasyon
