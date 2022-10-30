@@ -56,26 +56,40 @@
             </button>
         </div>
         <div id="bikeListWrapper" class="bikeListWrapper mb-5">
-            <div class="bikeListTitle d-flex mb-4">
-                <h5 class="col-6">Name</h5>
-                <h5 class="col-6">Station</h5>
+            <div class="bikeListTitle d-flex">
+                <div class="col-5">
+                    <h5 class="name">Name</h5>
+                    <span class="sortArrow">
+
+                    </span>
+                </div>
+                <div class="col-7">
+                    <h5 class="station">Station</h5>
+                    <span class="sortArrow">
+
+                    </span>
+                </div>
             </div>
             <div id="bikeList" class="bikeList" data-bind="foreach: bikeListFiltered">
                 <div class="bikeListItem d-flex">
-                    <p class="col-6" data-bind="text: name, attr: {id: bikeId, 'data-station-id': stationId}" />
-                    <p class="col-6" data-bind="text: stationName" />
+                    <p class="col-5 textControl"
+                        data-bind="text: name, attr: {id: bikeId, 'data-station-id': stationId}" />
+                    <p class="col-7 textControl" data-bind="text: stationName" />
                     <div class="bikeListItemDelete">
                         <span data-toggle="modal" data-target="#deleteBikeModal"
                             data-bind="click: $root.setBikeNameToModal">x</span>
                     </div>
                 </div>
             </div>
+            <div id="noResultText" data-bind="visible: bikeListFiltered().length == 0">
+                <p>No results for your search for "<span data-bind="text: search_ClientAddress()"></span>"
+                </p>
+            </div>
             <div id="loading">
                 <i class="fa fa-spinner" aria-hidden="true"></i>
             </div>
         </div>
     </div>
-
 
     <!-- Modals -->
     <div class="modal fade" id="addBikeModal" tabindex="-1" role="dialog" aria-labelledby="addBikeModalLabel"
@@ -123,7 +137,8 @@
                 <div class="modal-body">
                     You are about to delete
                     '<span id="deleteModalSpan"
-                        data-bind="text: selectedBikeName, attr:{'data-bike-id': selectedBikeId, 'data-bike-station-id': selectedBikeStationId}"></span>'.
+                        data-bind="text: selectedBikeName, attr:{'data-bike-id': selectedBikeId, 'data-bike-station-id': selectedBikeStationId}"
+                        class="textControl"></span>'.
                     Are you
                     sure?
                 </div>

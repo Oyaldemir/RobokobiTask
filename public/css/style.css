@@ -73,9 +73,9 @@ body{
     width: 100%;
     min-height: 100vh;
     background-image: url(https://robokobi.com/assets/Images/slider/bg.jpg) !important;
-    background-size: cover;
+    background-size: auto 100vh;
     background-position: top center;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
 }
 
 ::-webkit-scrollbar {
@@ -132,9 +132,13 @@ h5{
 
 .bikeListItem{
     position: relative;
-    border-bottom: 1px solid var(--gray-color);
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    border-top: 1px solid var(--gray-color);
+    margin-top: 10px;
+    padding-top: 10px;
+    cursor: default;
+}
+.bikeListItem:first-child{
+    border-top: none;
 }
 .bikeListItem .bikeListItemDelete{
     position: absolute;
@@ -144,7 +148,7 @@ h5{
     height: 15px;
     border-radius: 50%;
     font-size: 18px;
-    top:-2px;
+    top:8px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -233,6 +237,7 @@ h5{
 
 #bikeList{
     position: relative;
+    min-height: 80vh;
 }
 #loading{
     display: flex;
@@ -242,7 +247,8 @@ h5{
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--white-color);
+    /* background: var(--white-color); */
+    
 }
 #loading i{
     position: absolute;
@@ -258,6 +264,55 @@ h5{
     color: var(--red-color);
 }
 
+.highcharts-background{
+    fill: transparent;
+}
+
+.piechartWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 80vh;
+}
+.piechartWrapper #piechart{
+    width: 100%;
+    margin-top: -20px;
+}
+
+.bikeListTitle h5{
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    margin: 0 5px 0 0;
+}
+.bikeListTitle span i{
+    color: var(--main-color);
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+}
+
+.modal-dialog{
+    height: 65vh;
+    display: flex;
+    align-items: center;
+}
+
+#noResultText{
+    position: absolute;
+    top: 8rem;
+    width: 100%;
+    text-align: center;
+}
+
+.textControl{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2;
+}
 
 @keyframes loadingSpinner {
     from {
@@ -298,5 +353,16 @@ h5{
     #mainContainer nav .routes a{
         margin-right: 15px;
         margin-left: 0;
+    }
+    .modal-dialog{
+        height: 90vh;
+    }
+    .bikeListItem .bikeListItemDelete{
+        height: 100%;
+        top:4px;
+    }
+
+    .textControl{
+        white-space: unset;
     }
 }

@@ -18,6 +18,8 @@ function ViewModel() {
     self.selectedBikeName = ko.observable('');
     self.selectedBikeId = ko.observable('');
     self.selectedBikeStationId = ko.observable('');
+    self.isNameSorted = ko.observable(false);
+    self.isStationSorted = ko.observable(false);
 
     $.getJSON("/public/data/station.json", function (data) {
         stationList = data.data.stations;
@@ -66,7 +68,6 @@ function ViewModel() {
                 }
             }
         }
-
 
         var count = {};
         stationIds.forEach(function (i) { count[i] = (count[i] || 0) + 1; });
@@ -135,7 +136,17 @@ function ViewModel() {
             return (
                 (self.search_ClientAddress().length == 0 || bike.name().toLowerCase().indexOf(self.search_ClientAddress().toLowerCase()) > -1)
             )
-        });
+        }).sort(
+            function (a, b) {
+                if (self.isNameSorted() === true) {
+                    var x = a.name().toLowerCase(), y = b.name().toLowerCase();
+                    return (x < y ? -1 : x > y ? 1 : 0);
+                } else if (self.isStationSorted() === true) {
+                    var x = a.stationName().toLowerCase(), y = b.stationName().toLowerCase();
+                    return (x < y ? -1 : x > y ? 1 : 0);
+                }
+            }
+        );
     });
 
     //Set Bike Values For Modal
@@ -150,6 +161,7 @@ function ViewModel() {
         //localStorage.clear();
         self.OnOpenAction();
         self.ModalActions();
+        $("#bikeList").hide();
     })
 
     this.ModalActions = function () {
@@ -239,8 +251,35 @@ function ViewModel() {
 
             setTimeout(() => {
                 $("#loading").hide();
+                $("#bikeList").show();
             }, 500);
         }, 1000);
     }
+
+    $(".bikeListTitle .name").click(function () {
+        self.isNameSorted(!self.isNameSorted());
+        if (self.isNameSorted()) {
+            self.isStationSorted(false);
+
+            $(".bikeListTitle .name + .sortArrow").append('<i class="fa fa-caret-down" aria-hidden="true"></i>');
+            $(".bikeListTitle .station + .sortArrow").empty();
+        } else {
+            $(".bikeListTitle .name + .sortArrow").empty();
+            $(".bikeListTitle .station + .sortArrow").empty();
+        }
+    })
+    $(".bikeListTitle .station").click(function () {
+        self.isStationSorted(!self.isStationSorted());
+        if (self.isStationSorted()) {
+            self.isNameSorted(false);
+
+            $(".bikeListTitle .station + .sortArrow").append('<i class="fa fa-caret-down" aria-hidden="true"></i>');
+            $(".bikeListTitle .name + .sortArrow").empty();
+        } else {
+            $(".bikeListTitle .name + .sortArrow").empty();
+            $(".bikeListTitle .station + .sortArrow").empty();
+        }
+
+    })
 };
 ko.applyBindings(new ViewModel());
