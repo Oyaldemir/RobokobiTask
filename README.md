@@ -3,7 +3,9 @@
 Projede KnockoutJS, JQuery, Highcharts ve JSLinq kullanılmıştır.
 
 ## Yükleme
-Herhangi bir işlem gerektirmiyor. Index.html'i açıp, kullanmaya başlayabilirsiniz.
+HTML dosyayı açarak çalışmamaktadır. (CORS policy ve linklendirme)  
+  
+VS Code ile localhost üzerinden kullanmaya başlayabilirsiniz.
 
 ## İşlemler
 * Ekleme
@@ -15,3 +17,4 @@ Herhangi bir işlem gerektirmiyor. Index.html'i açıp, kullanmaya başlayabilir
 * Tablo/Grafik
   * ![Screenshot](https://yigitaldemir.com/assets/img/robokobi-chart.png)
 * Validasyon
+* Localstorage
